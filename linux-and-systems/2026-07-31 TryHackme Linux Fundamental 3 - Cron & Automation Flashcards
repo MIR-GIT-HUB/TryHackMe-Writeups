@@ -1,0 +1,23 @@
+# TryHackMe: Linux Fundamentals Part 3 — Automation Progress Log
+
+## Objective
+Document and review core system automation, background processes, and scheduling syntax.
+
+## Technical Knowledge Deck (Flashcards)
+
+| Question | Answer |
+| :--- | :--- |
+| Where do you find the crontab for a deployed TryHackMe room? | Inside the target instance (`10.x.x.x`) by using your **AttackBox terminal**. |
+| What is the risk of using `crontab -1` instead of `crontab -l`? | Font confusion. The number **`1`** causes an invalid option error; the lowercase letter **`l`** is required to **l**ist the schedule. |
+| What is the Cron Process? | A background worker service (`crond`) that checks the schedule files every minute. |
+| What is a Crontab? | The configuration files or master timetables where scheduled rules are written. |
+| What does "Managing Cron Jobs" mean? | Creating, listing, or deleting scheduled tasks using flags like `-e` (edit) or `-l` (list). |
+| What is a Wildcard (`*`) in cron syntax? | The "every" symbol telling a parameter to execute on every occurrence of that column. |
+| What does the shorthand `@reboot` mean? | It bypasses traditional time fields to execute a task immediately whenever the system boots up. |
+| What is the difference between Crontab Generator and Cron Guru? | **Generator** is a visual menu to build syntax; **Guru** is a translation tool to read syntax in plain text. |
+| What is the fundamental concept of system automation? | Running programs, tracking data, or clearing processes at exact times without human interaction. |
+| Why do Linux systems rely heavily on cron automation? | Servers run 24/7 without administrators logged in; automation saves time and removes human error. |
+| What are the 6 columns in a standard crontab entry? | 1. **MIN**: Minute (0-59)<br>2. **HOUR**: Hour (0-23)<br>3. **DOM**: Day of Month (1-31)<br>4. **MON**: Month (1-12)<br>5. **DOW**: Day of Week (0-6)<br>6. **CMD**: The command to run |
+
+***
+*Log generated on 2026-07-31.*
