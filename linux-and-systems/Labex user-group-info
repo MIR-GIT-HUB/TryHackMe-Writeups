@@ -1,0 +1,37 @@
+# LabEx: Linux First Lab — Display User and Group Information
+
+## Objective
+Identify local user profiles, map privilege assignments, and audit active security groups on a Linux workstation.
+
+## Hands-On Commands Verified
+
+### 1. View Current User Context
+Identify current session identity, UID (User ID), and assigned GIDs (Group IDs):
+```bash
+id
+```
+
+### 2. Inspect Active Users Account Database
+View system usernames, default home environments, and assigned shells:
+```bash
+cat /etc/passwd
+```
+
+### 3. Review Local Group Allocations
+Audit system groups to check which user accounts have privilege permissions:
+```bash
+cat /etc/group
+```
+
+### 4. Display Currently Logged In Users
+List active terminal sessions connected to the system:
+```bash
+who
+```
+
+## Key Devops takeaways
+* System automation requires deep knowledge of user permissions because cron tasks run under specific user contexts.
+* Misconfiguring user permissions or running automated tasks as the root user creates severe security vulnerabilities.
+
+***
+*Log generated on 2026-07-31.*
