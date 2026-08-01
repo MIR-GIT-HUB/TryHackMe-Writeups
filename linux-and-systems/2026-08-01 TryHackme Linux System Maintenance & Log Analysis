@@ -1,0 +1,67 @@
+# TryHackMe: Linux Fundamentals Part 3 - System Maintenance & Log Analysis
+
+This repository documents the core concepts learned during the TryHackMe Linux Fundamentals Part 3 room, focusing on system maintenance, package management, and real-world troubleshooting techniques for log tracking.
+
+---
+
+## 🛠️ Log Directory Troubleshooting Walkthrough
+
+### The Scenario
+When investigating server history files, running into a `Permission Denied` or an authentication error is common. This walkthrough demonstrates how to investigate the system independently when standard tutorial steps fail.
+
+### 1. Inspecting File Properties
+When a file blocks access, the first step is checking its owner and group boundaries:
+```bash
+ls -l /var/log/apache2/access.log
+```
+If the output shows strict ownership (e.g., owned by `root` and the `adm` group) and your current user (`id`) is not part of those groups, direct reading commands will be blocked by Linux.
+
+### 2. Identifying Empty Active Logs & Log Rotation
+If the active log file is readable but shows **0 bytes** of data, it means the system has recently archived the text. Running a directory discovery command reveals the full picture:
+```bash
+ls -la /var/log/apache2/
+```
+This reveals backup log files created by the system framework. In many lab environments or misconfigured environments, these backup files (e.g., `access.log.1`) may possess relaxed permissions, allowing standard users to read the historical traffic data directly without administrative escalation.
+
+---
+
+## 📝 Core Linux Concepts Reference
+
+### 1. Maintaining Your System: Automation & Software
+* **Automation:** Setting up background tasks (like log cleanups) to run automatically without manual human intervention.
+* **Developers:** The programmers who write code and release updates to patch security vulnerabilities.
+* **Software:** The programs running on Linux. Keeping them updated prevents exploitation of old system bugs.
+
+### 2. Repositories & Package Management
+* **APT Repository:** A secure digital warehouse or "app store" where Linux stores trusted software packages.
+* **User Accessibility & Open Source:** Linux allows users to fully customize and view the system. Open-source means the public can inspect, fix, and improve the source code.
+* **Operating System Vendors:** Companies or communities that maintain official, virus-free software repositories.
+* **Capability of OS:** The built-in framework that allows Linux to download, install, and update apps smoothly using single commands.
+* **add-apt-repository:** A command used to add external, non-official software warehouses to your system's download list.
+* **APT Package Installation:** Using package management commands tells Linux to safely fetch and install software bundles from the repository.
+* **Packages and Sources:** *Packages* are the pre-compiled apps ready for install. *Sources* are the configuration files listing the web URLs where those packages live.
+
+### 3. Package Deployment, Text Editors, & Security Integrity
+* **Dpkg:** The underlying, low-level installer tool that processes raw archive installation files directly.
+* **Text Editors (Sublime Text / Nano):** Tools used to modify configuration files. Nano runs directly inside the terminal for quick edits, while tools like Sublime Text provide a graphical workspace.
+* **Integrity is Guaranteed:** Cryptographic assurance that a software file was not altered or tampered with by a third party during download.
+* **GPG (Gnu Privacy Guard) / Keys for Safety:** Cryptographic digital signatures and keys used by Linux to verify that a repository is authentic and untampered with.
+* **3rd Party Repository:** Software archives run by independent communities outside the official operating system vendor.
+* **Updating APT Lists:** Refreshing the master list tells the system to recognize newly added repository entries. If skipped, the OS will not know the new software exists.
+
+### 4. System Logs & Intrusion Detection
+* **Log Files:** Digital journals where background services and the OS record everything happening behind the scenes.
+* **`/var/log` Directory:** The designated master folder where Linux forces all background applications and services to store their history logs.
+* **Log Rotation:** The automatic process of wiping active logs and archiving older data into numbered backups (`.1`, `.2`) so the hard drive does not run out of space.
+* **Attempted Brute Forces:** Rapid password-guessing attacks, which are caught and recorded in security logs like `/var/log/auth.log`.
+* **UFW (Uncomplicated Firewall):** A built-in security shield that blocks or permits network traffic based on custom security rules.
+* **Access Log vs. Error Log:** The *Access Log* tracks successful website traffic and file downloads. The *Error Log* tracks crashes, broken configurations, and glitches.
+* **Log Isolation:** Linux separates application environments. Web server statistics are explicitly isolated to their specific application folder; looking anywhere else will yield no web traffic data.
+
+---
+
+## 💡 Practical Security Takeaways
+
+1. **Permissions are Absolute:** If your user identity or group lacks specific rights, Linux will strictly block access to protect sensitive system history.
+2. **Handling Documentation Discrepancies:** In real-world environments, system documentation is frequently outdated. Knowing how to use directory enumeration to hunt for rotated files is a critical troubleshooting skill.
+3. **Log Analysis Defends Systems:** Attackers always leave footprints. Knowing exactly where server diaries are kept allows defenders to investigate breaches and identify malicious source activity.
