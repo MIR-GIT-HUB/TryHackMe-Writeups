@@ -1,0 +1,72 @@
+# reachme
+
+A simple repository containing learning notes and an Anki deck for Windows & Active Directory Fundamentals (TryHackMe).
+
+This project includes:
+- A clean Anki deck (questions and answers)
+- Summary notes for quick revision
+- Beginner-friendly explanations of NTFS, ADS, PowerShell, and attacker techniques
+
+---
+
+## 📘 Anki Deck: Windows & AD Fundamentals
+
+### QUESTIONS
+- What is a file system?
+- Why should I know what a file system is?
+- What are NTFS permissions?
+- Why are NTFS permissions important?
+- What does “attackers exploit weak permissions to move laterally” mean?
+- What does “attackers exploit weak permissions to plant malware” mean?
+- What are NTFS Alternate Data Streams (ADS)?
+- Why should I know about ADS?
+- What does “hide payloads” mean?
+- Why do attackers hide data inside files?
+- What is a stealth technique?
+- What is PowerShell?
+- Why should I know PowerShell?
+- Is PowerShell like Python?
+- What is fileless malware?
+- What is lateral movement?
+- What is persistence?
+- Why does THM teach ADS and hidden data techniques?
+
+### ANSWERS
+- A file system is how an operating system organizes and stores files on a disk.
+- You should know file systems to understand how data is stored, accessed, secured, and abused by attackers.
+- NTFS permissions are rules that allow or deny users access to files and folders.
+- They are important because weak permissions let attackers access, modify, or place malicious files.
+- It means attackers use overly open folders to jump from one machine or account to another.
+- It means attackers place malicious files in locations they shouldn’t normally have access to.
+- ADS are hidden data streams inside a file that don’t appear in normal file browsing.
+- You should know ADS because attackers use them to hide malicious content.
+- Hide payloads means hiding the malicious part of malware in a hidden location.
+- Attackers hide data to avoid detection and stay unnoticed longer.
+- A stealth technique is a method attackers use to remain invisible or undetected.
+- PowerShell is a Windows command-line shell and scripting language for system administration.
+- You should know PowerShell because it’s essential for managing Windows and understanding attacker behavior.
+- Yes, PowerShell is similar to Python but designed specifically for Windows tasks.
+- Fileless malware runs in memory using tools like PowerShell without leaving files on disk.
+- Lateral movement is attackers moving from one system or account to another inside a network.
+- Persistence is techniques attackers use to stay on a system even after reboot or cleanup.
+- THM teaches ADS because real attackers use hidden data techniques and defenders must detect them.
+
+---
+
+## 📄 Summary Notes
+
+- File system = structure for storing and organizing data.
+- NTFS = supports permissions, ADS, encryption.
+- Weak permissions allow attackers to move laterally or plant malware.
+- ADS = hidden data streams inside files.
+- Attackers hide payloads to avoid detection.
+- PowerShell = powerful Windows automation + attacker tool.
+- Fileless malware uses PowerShell in memory.
+- Lateral movement = moving through network.
+- Persistence = staying after reboot.
+
+---
+
+## 📚 Purpose
+
+This repository helps beginners quickly revise core Windows security concepts and build flashcards for TryHackMe’s Windows & AD Fundamentals path.
