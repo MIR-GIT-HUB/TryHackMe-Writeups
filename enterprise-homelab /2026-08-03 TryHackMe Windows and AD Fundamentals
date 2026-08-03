@@ -1,0 +1,13 @@
+Windows & Active Directory Fundamentals
+Notes and takeaways from today's study session on TryHackMe covering Windows OS internals and account structures.
+📌 Core Architecture
+•	System32 Directory: Contains the core files for the Windows operating system.
+•	System Criticality: Deleting or altering files within System32 can render the Windows OS completely inoperable.
+⚙️ Environment Variables
+•	Definition: Environment variables store crucial information about the operating system environment.
+•	System Directory: The standard system environment variable for the primary Windows directory is %windir%.
+👥 User Account Structures
+Local Windows systems categorize user accounts into specific types:
+•	Administrator: Full system access and control.
+•	Standard User: Restricted access for daily tasks.
+•	Guest: The built-in account used for temporary access 
