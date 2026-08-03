@@ -1,0 +1,22 @@
+# 🐧 Linux Learning Journey
+
+A minimal repository tracking my progress, command-line notes, and automation scripts as I master Linux systems.
+
+## 🧠 Spaced Repetition Study Template
+I use structured datasets to import core terminal concepts directly into **Anki** or **Excel** for long-term retention. 
+
+
+```text
+File Management - How to duplicate a file in the same directory?	cp file.txt file_copy.txt<br>(Note: Creates an exact copy under a new name)
+File Management - How to copy a file into a specific subdirectory?	cp file.txt target_dir/<br>(Note: Places the copy inside the specified folder)
+File Management - What flag is required to copy an entire directory?	The -r (recursive) flag.<br>(Note: Crucial for copying directories along with their contents)
+File Management - How do you rename a file using the terminal?	mv old_name.txt new_name.txt<br>(Note: Modifies the filename within the current path)
+File Management - How do you move a file into a directory?	mv file.txt target_dir/<br>(Note: Relocates the file to the new destination)
+File Management - How do you move and rename a file simultaneously?	mv dir/file.txt ./new_name.txt<br>(Note: Extracts the file from a folder and renames it in one step)
+File Deletion - Why is the rm command inherently risky?	Because command line deletions are permanent.<br>(Note: Linux has no built-in Recycle Bin for standard terminal drops)
+File Deletion - How do you prompt the system for permission before deleting a file?	rm -i file.txt<br>(Note: The -i interactive flag stops accidental deletions)
+File Deletion - Why does the rmdir command frequently throw errors?	Because rmdir only deletes directories that are entirely empty.<br>(Note: If a file or subdirectory exists inside, it fails)
+File Deletion - How do you delete a non-empty folder and all its contents?	rm -r target_dir/<br>(Note: Uses the recursive flag to clean out everything inside)
+File Deletion - Why is rm -rf considered a high-danger command?	It combines recursive deletion with forced action, bypassing all warnings.<br>(Note: A bad path choice can destroy vital system paths instantly)
+Terminal Mastery - How do the -R and -r flags differ on the ls command?	Uppercase -R lists subdirectories recursively, while lowercase -r reverses the sort order.<br>(Note: Case sensitivity alters flag behavior completely)
+``
