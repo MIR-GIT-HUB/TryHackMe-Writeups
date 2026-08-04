@@ -1,0 +1,76 @@
+# Windows System Administration & Troubleshooting Study Notes
+
+A centralized reference guide for core Windows utilities, system configuration, and security auditing baselines. Designed for quick-reference study and active recall.
+
+## 📌 Core Utilities Quick Reference
+
+| Command | Utility Name | Primary Study Use Case |
+| :--- | :--- | :--- |
+| `control.exe` | **Control Panel** | Legacy system setting management. |
+| `taskmgr` | **Task Manager** | Real-time resource tracking and startup app management. |
+| `msconfig` | **System Configuration** | Diagnosing boot issues and isolation troubleshooting. |
+| `services.msc` | **Services MMC** | Auditing background processes and verifying publishers. |
+| `winver` | **About Windows** | Checking OS build version and registration owner. |
+
+---
+
+## 🛠️ Utility Breakdowns & Deep Dives
+
+### User Account Control (UAC) & Control Panel
+* **UAC Purpose**: Protects local user settings and blocks unauthorized system-level changes.
+* **Execution**: Access the legacy Control Panel interface by running `control.exe` from the Run dialog (`Win + R`).
+
+### Task Manager (`taskmgr`)
+* **Process Monitoring**: Tracks active applications and background processes.
+* **Performance Tracking**: Displays hardware utilization metrics for CPU, Memory, Disk, and Network.
+* **Startup Management**: Modern versions of Windows delegate startup application management (enable/disable) entirely to Task Manager. 
+
+### System Configuration (`msconfig`)
+* **Primary Function**: Advanced troubleshooting tool used exclusively to diagnose Windows startup and boot sequence issues.
+* **General Tab**: Allows administrators to select specific boot options, determining which devices and services Windows loads during initialization.
+* **Note**: It is **not** a startup program management tool in modern Windows.
+
+### Windows Services (`services.msc`)
+* **Definition**: Special applications that execute in the background without user intervention.
+* **Auditing Protocol**: Use the Services MMC console to view executable paths and verified publishers.
+* **Provenance Verification**: Crucial for detecting unsigned third-party components, identifying malicious processes, and conducting security audits.
+* **Analysis Tip**: Sort by the "Manufacturer" column to isolate third-party entries (such as *Sysinternals*) from standard Microsoft services.
+
+### Advanced System Settings & Licensing
+* **Advanced Settings**: Used to configure system performance behavior, environment variables, and system recovery parameters.
+* **License Verification**: Execute `winver` via the Run dialog to verify the registered owner and OS build specifications.
+
+---
+
+# 🧠 Active Recall / Flashcard Prompts 
+
+### Section 1: Access & Configuration Commands
+* **Q:** What is the exact executable name used to open the Control Panel?
+  * **A:** `control.exe`
+* **Q:** What is the purpose of User Account Control (UAC)?
+  * **A:** To protect local user settings and prevent unauthorized system-level changes.
+* **Q:** What command do you use to find the registered owner of the Windows license?
+  * **A:** `winver`
+* **Q:** Where do you find options to control system performance behavior and system recovery?
+  * **A:** Advanced System Settings.
+
+### Section 2: Task Manager vs. MSConfig
+* **Q:** Which utility provides information about currently running applications, processes, CPU, and RAM utilization?
+  * **A:** Task Manager (`taskmgr`).
+* **Q:** What is the main purpose of the System Configuration utility (MSConfig)?
+  * **A:** Advanced troubleshooting and diagnosing startup/boot issues.
+* **Q:** What specific action can you perform in the General tab of MSConfig?
+  * **A:** Select which devices and services Windows loads upon boot.
+* **Q:** True or False: MSConfig is the correct tool to enable or disable startup items in modern Windows.
+  * **A:** False. Microsoft advises using Task Manager to manage startup items.
+
+### Section 3: Services & Security Auditing
+* **Q:** What is the technical definition of a Windows service?
+  * **A:** A special type of application that runs silently in the background.
+* **Q:** What command opens the Services Management Console?
+  * **A:** `services.msc`
+* **Q:** Why is it critical to use `services.msc` to view a service's executable path and publisher?
+  * **A:** To verify provenance, detect unwanted/unsigned third-party components, and assess if a service is malicious.
+* **Q:** How can you quickly group third-party entries together (like Sysinternals) inside the MSConfig Services tab?
+  * **A:** Click the "Manufacturer" column header to sort the list alphabetically.
+Use code with cau
