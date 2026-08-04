@@ -1,6 +1,6 @@
 # 🛡️ Cybersecurity Laboratory & Progress Logs
 
-Welcome to my technical portfolio documenting my hands-on security tracking, infrastructure engineering, and analyst operations. This repository maps directly to my structured 4-phase Blue Team roadmap.
+This repository documents my structured Blue Team learning journey through practical labs, security investigations, detection rules, and home SOC projects.
 
 ## 📂 Portfolio Architecture
 * **`/linux-and-systems/`** - CLI navigation, administration, configuration, and endpoint troubleshooting.
