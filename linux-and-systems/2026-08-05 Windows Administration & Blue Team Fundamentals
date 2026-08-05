@@ -1,0 +1,53 @@
+---
+### 1. Core Shells & Scripting
+
+#### PowerShell
+*   **What it is:** A powerful Windows command-line shell and task-based scripting language built on the .NET framework, designed for automation and system management.
+*   **Attacker Use Case:** Attackers frequently abuse PowerShell to launch **fileless attacks**, execute commands entirely in memory, and download malicious second-stage payloads directly from the internet.
+*   **Blue Team Defense:** Defenders actively monitor PowerShell logs (specifically <layout>linkableSpan(text="Script Block Logging", intent="Learn about enabling PowerShell script block logging for security auditing")</layout> and Module Logging) to catch early indicators of compromise (IoCs), obfuscated code, and malicious script execution.
+
+---
+
+### 2. Privilege Management
+
+#### User Account Control (UAC)
+*   **What it is:** A Windows security feature designed to prevent unauthorized privilege escalation by ensuring applications run in the context of a non-administrative account unless explicitly authorized.
+*   **Why it matters:** It acts as a critical barrier against malware gaining full system-level access. Attackers constantly develop <layout>linkableSpan(text="UAC bypass techniques", intent="Read about common UAC bypass techniques and MITRE ATT&CK patterns")</layout> to silently elevate their permissions without triggering a user prompt.
+
+---
+
+### 3. System Administration Consoles
+
+#### Computer Management (`compmgmt.msc`)
+*   **Purpose:** A built-in Microsoft Management Console (MMC) that provides centralized access to vital system tools, including local users, disk configurations, services, and system events.
+
+#### Event Viewer
+*   **Purpose:** A component that logs detailed records of system actions, user logons, application crashes, system errors, and security events.
+*   **Blue Team Value:** This console is foundational for digital forensics and incident response (DFIR). Investigators parse security logs to track **unauthorized logons, service creations, and lateral movement footprints**.
+
+#### Local Users & Groups (`lusrmgr.msc`)
+*   **Purpose:** A dedicated management tool used to configure and modify local user accounts and security groups on a machine.
+*   **Attacker Use Case:** Threat actors use this interface (or command-line equivalents) to **add hidden local administrator accounts** to maintain long-term, backdoored access to a compromised host.
+
+#### Disk Management
+*   **Purpose:** A utility that handles physical and virtual partitions, volumes, and drive configurations.
+*   **Attacker Use Case:** Sophisticated attackers may use Disk Management to mount hidden malicious drives, manipulate unallocated space, or create encrypted partitions to conceal staging data.
+
+---
+
+### 4. Windows Management Instrumentation (WMI)
+
+#### WMI Core Mechanics
+*   **What it is:** An infrastructure framework built into Windows that enables standardized automation, system data collection, and administrative task execution both locally and remotely.
+*   **Attacker Use Case:** Adversaries frequently hijack WMI for **stealthy persistence** (via WMI event consumers), remote code execution (RCE) across a network, and internal reconnaissance to map out system details.
+
+---
+
+### 5. System Information & Configuration
+
+#### System Information (`msinfo32`)
+*   **Purpose:** A comprehensive diagnostic utility that displays a massive, granular breakdown of the operating system's current hardware, system components, and software/driver environments.
+
+#### Environment Variables
+*   **What they are:** Dynamically named values that store crucial system-wide configuration data, such as OS paths, temporary folder locations, and architecture profiles.
+*   **Security Risk:** Attackers sometimes modify environment variables (such as `%PATH%`) to execute **DLL hijacking**, redirect legitimate software execution paths to malicious binaries, or hide payloads in overlooked temp directories.
