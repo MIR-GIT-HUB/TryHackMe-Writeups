@@ -1,0 +1,57 @@
+# Windows Fundamentals – Daily Learning Log 🖥️
+
+Welcome to today's learning log. This entry covers essential Windows tools, core command-line utilities, network diagnostics, and registry fundamentals that every blue-team defender must understand to detect anomalies and trace potential threat actors.
+
+---
+
+## 📊 System Monitoring Tools
+Understanding real-time resource consumption is key to identifying active threats. The primary built-in utility for this is **Resource Monitor (`resmon.exe`)**, which provides an in-depth view of system health across four main subsystems:
+
+*   **CPU Monitoring:** Tracks processor usage per process. Essential for spotting resource-heavy malware execution, unauthorized crypto-mining, or unusual background spikes.
+*   **Memory Monitoring:** Displays active RAM usage. Critical for identifying advanced techniques like process injection or fileless malware running entirely in volatile memory.
+*   **Disk Activity:** Shows active read/write operations. A sudden surge can indicate active ransomware encryption or massive data exfiltration.
+*   **Network Activity:** Displays active network connections and per-process bandwidth consumption. Crucial for spotting data staging or unauthorized outbound communication.
+
+---
+
+## 💻 Command-Line Essentials
+While modern operating systems rely heavily on Graphical User Interfaces (GUIs), early operating systems relied entirely on text-based command lines. Today, attackers rely heavily on the Command Line Interface (CLI) for scripting and automation—making it essential for defenders to master command syntax to analyze attacker behavior.
+
+### 🔧 Core Commands
+*   `hostname` – Displays the unique computer name. Essential for mapping out the local environment during an incident investigation.
+*   `whoami` – Displays the current logged-in user account along with their respective privilege level and security context.
+*   `ipconfig` – Displays standard TCP/IP network configuration details to verify network integrity and troubleshoot connection issues.
+    *   `ipconfig /all` – Provides full, detailed syntax output including MAC addresses, DNS servers, and DHCP configurations. This helps defenders spot network spoofing or unauthorized configuration changes.
+*   `/?` – The help switch. Appended to any command (e.g., `dir /?`) to display standard usage parameters and syntax documentation.
+*   `cls` – Clears the command prompt screen to maintain a clean workspace during intensive investigations.
+
+---
+
+## 🌐 Network Diagnostics
+Monitoring how a system interacts with the network is one of a defender's strongest capabilities.
+
+*   **`netstat`:** Displays active network connections, routing tables, and protocol statistics. It is invaluable for detecting live malware sessions or unauthorized remote connections.
+*   **`net` Command:** A powerful administrative utility used to manage local network resources, user accounts, groups, and active sessions. Because attackers frequently abuse this utility for lateral movement and discovery, defenders must audit its usage closely.
+
+### Key `net` Sub-Commands
+*   `net user` – Manages, creates, or lists user accounts on the local system.
+*   `net localgroup` – Manages or views local security groups (such as checking who belongs to the local *Administrators* group).
+*   `net use` – Connects, disconnects, and views connections to shared network resources (like mapped drives).
+*   `net share` – Displays, creates, or manages shared folders accessible over the network.
+*   `net session` – Views or disconnects active network sessions communicating with the host.
+
+---
+
+## 🗂️ Registry Fundamentals
+The **Windows Registry** serves as a centralized hierarchical database that stores configuration settings for the operating system, hardware devices, user preferences, and installed software applications. Because many malware strains modify registry keys to maintain access, defenders must monitor it closely.
+
+*   **`regedit.exe` vs. `regedt32.exe`:** Historically, `regedit` was the standard 16-bit registry editor while `regedt32` was the 32-bit advanced version. In modern Windows operating systems, these utilities have been completely merged. Running either command will open the exact same modern GUI Registry Editor.
+*   **Persistence Mechanisms:** Attackers routinely modify the registry to establish persistence, ensuring their malicious payloads execute automatically whenever the system boots or a user logs in.
+
+---
+
+## ⚠️ Threat Indicators
+When monitoring a network or endpoint, look out for these common indicators of compromise (IoCs):
+
+*   **Abnormal Spikes:** A sudden, unexplained surge in CPU, memory, disk utilization, or network traffic that does not align with routine business baseline operations.
+*   **Malware Beaconing:** Predictable, periodic outbound connections sent from an infected host to an external Command and Control (C2) infrastructure to check for new attacker commands.
