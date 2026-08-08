@@ -1,0 +1,364 @@
+# 📘 Unified Learning Notes — Linux, Windows Security, Virtualization, Networking & Cloud
+
+This repository contains my complete learning notes across Linux fundamentals, Windows security, virtualization, networking basics, and cloud computing. It serves as a practical reference for cybersecurity, system administration, and blue‑team foundational knowledge.
+
+---
+
+# 🐧 Linux Fundamentals
+
+## Navigating the Filesystem
+Linux uses a hierarchical filesystem shaped like a tree.
+
+Root directory: /  
+Home directory: ~  
+Current directory:  
+pwd
+
+### Navigation Commands
+ls              # List contents  
+ls -a           # Show hidden files  
+cd folder       # Enter folder  
+cd ..           # Up one level  
+cd ~            # Home directory  
+mkdir newdir    # Create directory  
+rmdir newdir    # Remove empty directory
+
+### Absolute vs Relative Paths
+Absolute: cd /home/user/project  
+Relative: cd project
+
+---
+
+## Creating Files & Redirecting Output
+touch file.txt  
+echo "Hello" > file.txt  
+echo "More" >> file.txt  
+
+Prevent overwrites:  
+set -o noclobber  
+echo "Force" >| file.txt
+
+---
+
+## Hidden Files
+echo "data" > .hiddenfile  
+ls -a  
+Used for configuration files like .bashrc.
+
+---
+
+## File Permissions
+r = read  
+w = write  
+x = execute  
+
+Example: rw-rw-r--  
+Owner: rw  
+Group: rw  
+Others: r
+
+### Numeric System
+read = 4  
+write = 2  
+execute = 1  
+
+700 = rwx --- ---  
+Owner full access; others none.
+
+### Symbolic System
+chmod u+rwx file  
+chmod g-w file  
+chmod o=rx file  
+chmod -R 755 directory/
+
+---
+
+## Ownership — chown
+chown user file  
+chown user:group file  
+chown -R user:group directory/
+
+---
+
+## Bash & Shell Basics
+#!/bin/bash  
+sh — classic shell  
+zsh — modern shell  
+python — script interpreter
+
+---
+
+## Recursive Flags
+-R = recursive  
+-r = depends on command  
+rm -r → recursive delete  
+ls -r → reverse order
+
+---
+
+## Listing Files
+ls  
+ls -l  
+ls -a  
+ls -la  
+ls -l dir
+
+---
+
+# 🪟 Windows Security Fundamentals
+
+## Windows Security Features
+Built‑in tools protecting device, data, identity, and network.
+
+## Windows Update / Patch Tuesday
+Monthly security patches fixing vulnerabilities.
+
+## Microsoft Defender
+Built‑in antivirus with real‑time protection and scheduled scans.
+
+## Definition vs Driver Updates
+Definition updates improve malware detection.  
+Driver updates improve hardware compatibility.
+
+## Windows Security App
+Central hub for antivirus, firewall, device security, and account protection.
+
+## Full Scan Duration
+Full scan may take ~1 hour because it checks all files and processes.
+
+## Automatic Scanning
+Defender automatically performs real‑time and scheduled scans.
+
+---
+
+## Controlled Folder Access
+Blocks unauthorized apps from modifying protected folders.  
+Helps prevent ransomware.
+
+## Exclusions
+Files or folders skipped during scans to reduce false positives.
+
+---
+
+## Windows Firewall
+Controls incoming/outgoing traffic like a security guard.
+
+### Firewall Profiles
+Domain — corporate networks  
+Private — home networks  
+Public — public Wi‑Fi (strictest)
+
+### Open Firewall Console
+WF.msc
+
+---
+
+## App & Browser Control
+SmartScreen blocks unsafe websites, downloads, and apps.
+
+## Exploit Protection
+Prevents common exploit techniques.
+
+## Memory Integrity (Core Isolation)
+Blocks malicious code from injecting into high‑security processes.
+
+---
+
+## Trusted Platform Module (TPM)
+Hardware security chip storing cryptographic keys.  
+Tamper‑resistant.
+
+## BitLocker
+Full‑disk encryption protecting data if device is lost or stolen.
+
+### TPM + BitLocker
+Strongest protection: secure key storage + tamper detection.
+
+### Systems Without TPM
+Startup key stored on USB drive.
+
+---
+
+## Volume Shadow Copy Service (VSS)
+Creates point‑in‑time snapshots for backup.  
+Stored in System Volume Information.
+
+### Why Malware Deletes VSS
+To prevent recovery and force ransom payment.
+
+---
+
+## Living Off The Land (LOTL)
+Attackers use built‑in Windows tools (PowerShell, WMI) to avoid detection.
+
+---
+
+## Antimalware Scan Interface (AMSI)
+Scans scripts before execution to detect malicious behavior.
+
+## Credential Guard
+Protects login secrets using virtualization‑based security.
+
+## Windows Hello
+Biometric authentication: face, fingerprint, PIN.
+
+## Top Windows 10 Security Features
+Credential Guard  
+Device Guard  
+Windows Hello  
+Exploit Protection  
+Secure Boot
+
+---
+
+# 🗂️ Active Directory Fundamentals
+
+Active Directory is a centralized directory storing users, computers, groups, and resources.
+
+## Windows Domain
+Group of users and computers managed centrally.
+
+## Domain Controller (DC)
+Server running Active Directory Domain Services (AD DS).
+
+## Core of Windows Domain
+AD DS handles authentication, authorization, and directory objects.
+
+## AD Objects
+Users — people/services  
+Groups — permission sets  
+Machines — computer accounts  
+Printers — shared printing resources  
+Shares — shared folders/files
+
+## Machine Accounts
+End with $ to identify computer objects.
+
+## Organizational Units (OUs)
+Containers organizing users and computers.
+
+## OUs vs Security Groups
+OUs apply policies.  
+Security Groups grant permissions.
+
+## Domain Admins
+Full control over all domain resources.
+
+## Delegation
+Granting specific administrative permissions to users.
+
+---
+
+# 🧱 Virtualization Fundamentals
+
+## What is Virtualization
+Running multiple virtual computers on one physical machine.
+
+## Why Virtualization
+No need for separate servers for each software or system.
+
+## Hypervisor
+Virtualization layer managing virtual machines.  
+Acts like a building manager allocating resources.
+
+## Lab Machine (LM)
+A virtual computer created inside a hypervisor.
+
+## Containers
+Lightweight environments running a single application.
+
+## VM Components
+CPU  
+Memory  
+Disk size
+
+---
+
+# 🌐 Networking Basics
+
+Browser acts as client requesting webpage.  
+Server responds with requested content.
+
+## Protocol
+Language computers use to communicate.
+
+## Request & Response
+Two parts of client‑server communication.
+
+## Port
+Identifies specific service (e.g., 80 = HTTP, 443 = HTTPS).
+
+## DNS
+DNS is like GPS.  
+IP is the home address.  
+DNS resolves domain names into IP addresses.
+
+## HTTPS
+Hypertext Transfer Protocol Secure.
+
+## Cookies vs Tokens
+Cookies store session data in browser.  
+Tokens identify session securely and statelessly.
+
+## HTTP
+Protocol for web communication.  
+GET method requests data → 200 OK.
+
+## URL Components
+Scheme  
+Host  
+Filename  
+Address  
+Status
+
+---
+
+# ☁️ Cloud Computing Fundamentals
+
+## What is Cloud Computing
+Using computing resources over the internet.
+
+## Evolution of Cloud
+Physical servers → virtualization → automation → cloud (AWS 2006) → modern era.
+
+## Cloud Service Models
+IaaS — infrastructure  
+PaaS — platform  
+SaaS — software
+
+### Analogy
+IaaS = empty apartment  
+PaaS = semi‑furnished  
+SaaS = hotel
+
+## Cloud Characteristics
+Scalability — ability to grow or shrink resources automatically.
+
+## EC2
+Amazon’s virtual machine service.
+
+## Instance Type
+Defines CPU, memory, and performance of a cloud VM.
+
+## Cloud Deployment Models
+Public — shared  
+Private — dedicated  
+Hybrid — mix of both
+
+## “Up to Operating System”
+In IaaS, customer manages everything from OS upward.
+
+---
+
+# 🎯 Purpose of This Repository
+
+This unified README documents my learning progress across:
+
+Linux fundamentals  
+Windows security  
+Active Directory  
+Virtualization  
+Networking  
+Cloud computing  
+
+It serves as a practical reference for cybersecurity and system administration fundamentals used in blue‑team operations and hands‑on labs.
